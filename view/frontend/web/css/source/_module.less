@@ -1,0 +1,25 @@
+& when (@media-common = true) {
+  .consent-popup-container {
+    .consents {
+      .consent {
+        margin: 0 0 15px 0;
+
+        .name {
+          font-weight: 600;
+          font-size: 1.1em;
+        }
+
+        .description {
+          display: block;
+          padding: 0 0 0 23px;
+        }
+      }
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  .consent-popup-container .modal-inner-wrap {
+    max-width: 600px;
+  }
+}

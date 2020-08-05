@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * This file is part of the Flurrybox EnhancedPrivacyPro package.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Flurrybox EnhancedPrivacyPro
+ * to newer versions in the future.
+ *
+ * @copyright Copyright (c) 2018 Flurrybox, Ltd. (https://flurrybox.com/)
+ * @license   GNU General Public License ("GPL") v3.0
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="enhancedprivacy" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Enhanced Privacy</label>
+            <tab>flurrybox</tab>
+            <resource>Flurrybox_EnhancedPrivacyPro::config</resource>
+            <group id="pro" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Enhanced Privacy: Pro</label>
+                <group id="lock" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Inactive Account Lockout</label>
+                    <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1"
+                           showInWebsite="0" showInStore="0">
+                        <label>Enabled</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="primary_account" translate="label comment" type="select" sortOrder="20" showInDefault="1"
+                           showInWebsite="0" showInStore="0">
+                        <label>Primary Account</label>
+                        <source_model>Flurrybox\EnhancedPrivacyPro\Model\Config\Source\Accounts</source_model>
+                        <comment><![CDATA[This account will never be locked]]></comment>
+                        <depends>
+                            <field id="*/*/*/enable">1</field>
+                        </depends>
+                    </field>
+                    <field id="time" translate="label comment" type="text" sortOrder="30" showInDefault="1"
+                           showInWebsite="0" showInStore="0">
+                        <label>Lockout Time</label>
+                        <comment><![CDATA[Time in days since last login in order for account to get locked]]></comment>
+                        <depends>
+                            <field id="*/*/*/enable">1</field>
+                        </depends>
+                    </field>
+                </group>
+            </group>
+        </section>
+        <section id="customer">
+            <group id="enhancedprivacy">
+                <group id="account">
+                    <field id="behaviour" translate="label comment" type="select" sortOrder="15" showInDefault="1"
+                           showInWebsite="0" showInStore="0">
+                        <label>Deletion behaviour</label>
+                        <source_model>Flurrybox\EnhancedPrivacyPro\Model\Config\Source\Behaviour</source_model>
+                        <comment><![CDATA[<b>Automatic</b> - Requests are processed by CRON after certain time span<br><b>Manual</b> - Request are reviewed by administrators before final decision]]></comment>
+                        <depends>
+                            <field id="*/*/account/account_deletion_enabled">1</field>
+                        </depends>
+                    </field>
+                </group>
+            </group>
+        </section>
+    </system>
+</config>

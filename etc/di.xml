@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * This file is part of the Flurrybox EnhancedPrivacyPro package.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Flurrybox EnhancedPrivacyPro
+ * to newer versions in the future.
+ *
+ * @copyright Copyright (c) 2018 Flurrybox, Ltd. (https://flurrybox.com/)
+ * @license   GNU General Public License ("GPL") v3.0
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Flurrybox\EnhancedPrivacyPro\Api\UserManagementInterface"
+                type="Flurrybox\EnhancedPrivacyPro\Model\UserManagement"/>
+    <preference for="Flurrybox\EnhancedPrivacyPro\Api\Data\ScheduleStatusInterface"
+                type="Flurrybox\EnhancedPrivacyPro\Model\ScheduleStatus"/>
+    <preference for="Flurrybox\EnhancedPrivacyPro\Api\ScheduleStatusRepositoryInterface"
+                type="Flurrybox\EnhancedPrivacyPro\Model\ScheduleStatusRepository"/>
+    <preference for="Flurrybox\EnhancedPrivacyPro\Api\ScheduleManagementInterface"
+                type="Flurrybox\EnhancedPrivacyPro\Model\ScheduleManagement"/>
+    <preference for="Flurrybox\EnhancedPrivacyPro\Api\Data\ConsentInterface"
+                type="Flurrybox\EnhancedPrivacyPro\Model\Consent"/>
+    <preference for="Flurrybox\EnhancedPrivacyPro\Api\ConsentRepositoryInterface"
+                type="Flurrybox\EnhancedPrivacyPro\Model\ConsentRepository"/>
+    <preference for="Flurrybox\EnhancedPrivacyPro\Api\ConsentManagementInterface"
+                type="Flurrybox\EnhancedPrivacyPro\Model\ConsentManagement"/>
+    <preference for="Flurrybox\EnhancedPrivacyPro\Api\Data\ConsentSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults"/>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="deletion_request_listing_data_source"
+                      xsi:type="string">Flurrybox\EnhancedPrivacy\Model\ResourceModel\Schedule\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Flurrybox\EnhancedPrivacy\Model\ResourceModel\Schedule\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">flurrybox_enhancedprivacy_cleanup_schedule</argument>
+            <argument name="resourceModel"
+                      xsi:type="string">Flurrybox\EnhancedPrivacy\Model\ResourceModel\Schedule</argument>
+        </arguments>
+    </virtualType>
+    <type name="Flurrybox\EnhancedPrivacy\Api\ScheduleRepositoryInterface">
+        <plugin name="processScheduleStatus"
+                type="Flurrybox\EnhancedPrivacyPro\Plugin\EnhancedPrivacy\Model\ScheduleRepositoryPlugin"/>
+    </type>
+    <type name="Magento\Customer\Api\CustomerRepositoryInterface">
+        <plugin name="processCustomerConsents"
+                type="Flurrybox\EnhancedPrivacyPro\Plugin\Customer\Model\ResourceModel\CustomerRepositoryPlugin"/>
+    </type>
+    <type name="Flurrybox\EnhancedPrivacy\Api\ProcessorsInterface">
+        <arguments>
+            <argument name="exportProcessors" xsi:type="array">
+                <item name="consents" xsi:type="object">Flurrybox\EnhancedPrivacyPro\Privacy\Export\Consents</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Flurrybox\EnhancedPrivacyPro\Privacy\ConsentPool">
+        <arguments>
+            <argument name="consents" xsi:type="array">
+                <item name="google-analytics"
+                      xsi:type="object">Flurrybox\EnhancedPrivacyPro\Privacy\Consent\GoogleAnalytics</item>
+                <item name="facebook-pixel"
+                      xsi:type="object">Flurrybox\EnhancedPrivacyPro\Privacy\Consent\FacebookPixel</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Flurrybox\EnhancedPrivacyPro\Privacy\Consent\GoogleAnalytics"
+                 type="Flurrybox\EnhancedPrivacyPro\Privacy\Consent">
+        <arguments>
+            <argument name="code" xsi:type="string">google-analytics</argument>
+            <argument name="name" xsi:type="string">Google Analytics</argument>
+            <argument name="description" xsi:type="string" translatable="true">Google Analytics tracking. Tracks data like visited pages, etc.</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Flurrybox\EnhancedPrivacyPro\Privacy\Consent\FacebookPixel"
+                 type="Flurrybox\EnhancedPrivacyPro\Privacy\Consent">
+        <arguments>
+            <argument name="code" xsi:type="string">facebook-pixel</argument>
+            <argument name="name" xsi:type="string">Facebook Pixel</argument>
+            <argument name="description" xsi:type="string" translatable="true">Facebook marketing pixels to track conversion.</argument>
+        </arguments>
+    </virtualType>
+</config>

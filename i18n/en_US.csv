@@ -1,0 +1,46 @@
+"Are you sure you want to do this?","Are you sure you want to do this?"
+"Anonymize Customer","Anonymize Customer"
+"No customer id provided!","No customer id provided!"
+"Customer anonymized successfully!","Customer anonymized successfully!"
+"Requested customer could not be found!","Requested customer could not be found!"
+"Failed to anonymize customer!","Failed to anonymize customer!"
+"Request approved successfully","Request approved successfully"
+"Failed to approve request","Failed to approve request"
+Automatic,Automatic
+Manual,Manual
+"Failed to allow '%1' consent","Failed to allow '%1' consent"
+"Failed to deny '%1' consent","Failed to deny '%1' consent"
+"Failed to update customer consents","Failed to update customer consents"
+"Requested consent doesn't exist!","Requested consent doesn't exist!"
+"Consent could not be saved!","Consent could not be saved!"
+"Consent could not be deleted!","Consent could not be deleted!"
+"Requested schedule status doesn't exist!","Requested schedule status doesn't exist!"
+"Schedule status could not be saved!","Schedule status could not be saved!"
+"Schedule status could not be deleted!","Schedule status could not be deleted!"
+Allowed,Allowed
+Disallowed,Disallowed
+Approved,Approved
+Approve,Approve
+"-- Not Scheduled Yet --","-- Not Scheduled Yet --"
+Unapproved,Unapproved
+"Apply and continue","Apply and continue"
+"Deletion Requests","Deletion Requests"
+"Inactive Account Lockout","Inactive Account Lockout"
+Enabled,Enabled
+"Primary Account","Primary Account"
+"This account will never be locked","This account will never be locked"
+"Lockout Time","Lockout Time"
+"Time in days since last login in order for account to get locked","Time in days since last login in order for account to get locked"
+"Deletion behaviour","Deletion behaviour"
+"<b>Automatic</b> - Requests are processed by CRON after certain time span<br><b>Manual</b> - Request are reviewed by administrators before final decision","<b>Automatic</b> - Requests are processed by CRON after certain time span<br><b>Manual</b> - Request are reviewed by administrators before final decision"
+"Google Analytics tracking. Tracks data like visited pages, etc.","Google Analytics tracking. Tracks data like visited pages, etc."
+"Facebook marketing pixels to track conversion.","Facebook marketing pixels to track conversion."
+"Sub2 marketing tracking and other stuff that can be useful for use. Just to show case a very very long description here.","Sub2 marketing tracking and other stuff that can be useful for use. Just to show case a very very long description here."
+"Approve Requests","Approve Requests"
+"Are you sure you wan't to approve selected items?","Are you sure you wan't to approve selected items?"
+ID,ID
+Customer,Customer
+Reason,Reason
+"Deletion Type","Deletion Type"
+"Scheduled At","Scheduled At"
+"Approval Status","Approval Status"

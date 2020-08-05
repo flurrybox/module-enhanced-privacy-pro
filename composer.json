@@ -1,0 +1,28 @@
+{
+    "name": "flurrybox/module-enhanced-privacy-pro",
+    "description": "Add-on for Enhanced Privacy module providing advanced features",
+    "type": "magento2-module",
+    "version": "1.2.0",
+    "authors": [
+        {
+            "name": "Flurrybox",
+            "email": "info@flurrybox.com"
+        }
+    ],
+    "license": [
+        "GPL-3.0-or-later"
+    ],
+    "require": {
+        "php": "^7.0",
+        "flurrybox/module-core": "^1.0.0",
+        "flurrybox/enhanced-privacy": "^2.0.0"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Flurrybox\\EnhancedPrivacyPro\\": ""
+        }
+    }
+}
